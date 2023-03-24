@@ -25,5 +25,4 @@ static const std::string degreeProgramString[] = {
 	"NETWORK",
 	"SOFTWARE"
 };
-
 #endif /* degree_h */

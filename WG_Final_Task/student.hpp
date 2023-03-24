@@ -64,5 +64,4 @@ private:
     int courseDays[daysArray];
     DegreeProgram degreeProgram;
 };
-
 #endif /* student_h */

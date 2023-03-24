@@ -16,7 +16,6 @@
 #include <regex>
 #include "roster.hpp"
 #include "student.hpp"
-
 using namespace std;
 
 const static int totalStudents = 5;

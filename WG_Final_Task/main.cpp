@@ -12,15 +12,14 @@
 #include <string>
 #include "roster.hpp"
 #include "student.hpp"
-
 using namespace std;
 
 int main() {
 
     cout << "Scripting and Programming Applications - C867" << endl;
     cout << "Language: C++" << endl;
-    cout << "WGU Student ID: 010807298" << endl;
-    cout << "Programmer: Melodee Stewart" << endl << endl;
+    cout << "WGU Student ID: 009392213" << endl;
+    cout << "Kyle Myers" << endl << endl;
     
     const string studentData[] = {
         "A1,John,Smith,John1989@gm ail.com,20,30,35,40,SECURITY",

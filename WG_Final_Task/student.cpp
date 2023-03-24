@@ -27,7 +27,6 @@ Student::Student()
     }
     this->degreeProgram = DegreeProgram::UNDECLARED;
 };
-
 Student::Student(std::string studentID,
                  std::string firstName,
                  std::string lastName,
