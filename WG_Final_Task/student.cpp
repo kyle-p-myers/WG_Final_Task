@@ -1,113 +1,82 @@
-//
 //  student.cpp
-//  C867
+//  C867 - JYM1 TASK 1 - CLASS ROSTER
 //
-//  Created by Kyle on 3/18/23.
+//  Created by Toni Work on 12/19/22.
 //
+/*
+ D.  For the Student class, do the following:
+    2.  c.  All external access and changes to any instance variables of the Student class must be done using accessor and mutator functions.
+ */
+#include <stdio.h>
 #include <iostream>
-#include <string>
-#include "degree.h"
 #include "student.hpp"
+#include "degree.h"
+
 using namespace std;
 
-
-// Constructor Creation
-student::student(string studentId, string firstName, string lastName, string email, int age, int numDaysToComplete[3], DegreeProgram degree)
+//d.  constructor using all of the input parameters provided in the table
+Student::Student()
 {
-    this->studentID = studentId;
-    this->firstName = firstName;
-    this->lastName = lastName;
-    this->email = email;
-    this->age = age;
-    setNumDaysToComplete(numDaysToComplete);
-    this->degree = degree;
-}
-
-// Encapsulation (Accessor)
-string student::getStudentID()
-{
-    return studentID;
-}
-
-int student::getAge()
-{
-    return age;
-}
-
-string student::getFirstName()
-{
-    return firstName;
-}
-
-string student::getLastName()
-{
-    return lastName;
-}
-
-string student::getEmail()
-{
-    return email;
-}
-
-int* student::getNumDaysToComplete()
-{
-
-    return numDaysToComplete;
-}
-
-DegreeProgram student::getDegreeProgram()
-{
-    return degree;
-}
-
-//Encapsulation (Mutators)
-void student::setStudentID(string ID)
-{
-    this->studentID = ID;
-}
-
-void student::setAge(int age)
-{
-    this->age = age;
-}
-
-void student::setNumDaysToComplete(int numdays[])
-{
-    for (int i = 0; i < 3; i++) {
-        numDaysToComplete[i] = numdays[i];
+    this->studentID = "";
+    this->firstName = "";
+    this->lastName = "";
+    this->emailAddress = "";
+    this->age = -1;
+    for (int i = 0; i < daysArray; i++) {
+        this->courseDays[i] = 0;
     }
-}
-
-void student::setDegreeProgram(DegreeProgram program)
+    this->degreeProgram = DegreeProgram::UNDECLARED;
+};
+Student::Student(std::string studentID,
+                 std::string firstName,
+                 std::string lastName,
+                 std::string emailAddress,
+                 int age,
+                 int courseDays[],
+                 DegreeProgram degreeProgram)
 {
-    this->degree = program;
-}
-
-void student::setFirstName(string firstName)
-{
+    this->studentID = studentID;
     this->firstName = firstName;
-}
-
-void student::setLastName(string lastName)
-{
     this->lastName = lastName;
-}
+    this->emailAddress = emailAddress;
+    this->age = age;
+    for (int i = 0; i < daysArray; i++) {
+        this->courseDays[i] = courseDays[i];
+    }
+    this->degreeProgram = degreeProgram;
+};
+//a.  an accessor (i.e., getter) for each instance variable from part D1
+std::string Student::GetStudentID() {return this->studentID;}
+std::string Student::GetFirstName() {return this->firstName;}
+std::string Student::GetLastName() {return this->lastName;}
+std::string Student::GetEmailAddress() {return this->emailAddress;}
+int Student::GetAge() {return this->age;}
+const int* Student::GetCourseDays() {return this->courseDays;}
+DegreeProgram Student::GetDegreeProgram() {return degreeProgram;}
 
-void student::setEmail(string email)
-{
-    this->email= email;
-}
+//b.  a mutator (i.e., setter) for each instance variable from part D1
+void Student::SetStudentID(std::string studentID) {this->studentID = studentID;}
+void Student::SetFirstName(std::string firstName) {this->firstName = firstName;}
+void Student::SetLastName(std::string lastName){this-> lastName = lastName;}
+void Student::SetEmailAddress(std::string emailAddress) {this-> emailAddress = emailAddress;}
+void Student::SetAge(int age) {this-> age = age;}
+void Student::SetCourseDays(const int courseDays[]) {
+    for (int i = 0; i < daysArray; i++) this->courseDays[i] = courseDays[i];
+};
+void Student::SetDegreeProgram(DegreeProgram dProgram) {this->degreeProgram = dProgram;}
 
-//Print Function for Student Info
-void student::print(){
+//e.  print() to print specific student data
+void Student::print(){
     cout << "| Student ID :\t" << this->studentID << " |" << '\t';
     cout << "First & Last Name :\t" << this->firstName << '\t';
     cout << this->lastName << " |" << '\t';
-    cout << "Email Address :\t" << this->email << " |" << '\t';
+    cout << "Email Address :\t" << this->emailAddress << " |" << '\t';
     cout << "Age :\t" << this->age << " |" << '\t';
-    cout << "Days in Course :\t" << this->numDaysToComplete[0] << "," << '\t';
-    cout << this->numDaysToComplete[1] << "," << '\t';
-    cout << this->numDaysToComplete[2] << " |" << '\t';
-    cout << "Degree Program :\t" << degreeProgramString[(int)this->degree]<< " |" << '\t' << endl;
+    cout << "Days in Course :\t" << this->courseDays[0] << "," << '\t';
+    cout << this->courseDays[1] << "," << '\t';
+    cout << this->courseDays[2] << " |" << '\t';
+    cout << "Degree Program :\t" << degreeProgramString[(int)this->degreeProgram]<< " |" << '\t' << endl;
 };
 
+//destructor
+Student::~Student(){};

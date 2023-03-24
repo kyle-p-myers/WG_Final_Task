@@ -1,51 +1,67 @@
 //
-//  student.hpp
-//  C867
+//  student.h
+//  C867 - JYM1 TASK 1 - CLASS ROSTER
 //
-//  Created by Kyle on 3/18/23.
+//  Created by Toni Work on 12/19/22.
 //
 
-#pragma once
-#include<string>
+
+#ifndef student_h
+#define student_h
 #include "degree.h"
+#include <string>
 
+using std::string;
+using std::cout;
+using std::endl;
+using std::left;
 using namespace std;
-class student
-{
-//Private Variables
-private:
-    int  age;
-    string studentID, firstName, lastName, email;
-    int numDaysToComplete[3];
-    DegreeProgram degree;
-    
+
+class Student {
 public:
-    //Accessors
-    string getStudentID();
-    string getFirstName();
-    string getLastName();
-    string getEmail();
-    int getAge();
-    int* getNumDaysToComplete();
-    DegreeProgram getDegreeProgram();
-
-    //Mutators
-    void setStudentID(string studentID);
-    void setFirstName(string firstName);
-    void setLastName(string lastName);
-    void setEmail(string email);
-    void setAge(int age);
-    void setNumDaysToComplete(int numdays[]);
-    void setDegreeProgram(DegreeProgram program);
-
-    //Constructor Statement
-    student(string studentId, string firstName, string lastName, string email,int age, int numDaysToComplete[3], DegreeProgram degree);
-
+    const static int daysArray = 3;
+    //constructor using all of the input parameters provided in the table
+    Student();//default values constructor
+    Student(std::string studentID,
+            std::string firstName,
+            std::string lastName,
+            std::string emailAddress,
+            int age,
+            int courseDays[],
+            DegreeProgram degreeProgram);
+    // deconstructor
+    ~Student();
     
-   
-    //Variable Choices for Print Fnct.
+    //an accessor (i.e., getter) for each instance variable from part D1
+    std::string GetStudentID();
+    std::string GetFirstName();
+    std::string GetLastName();
+    std::string GetEmailAddress();
+    int  GetAge();
+    const int* GetCourseDays();
+    DegreeProgram GetDegreeProgram();
+    
+    //a mutator (i.e., setter) for each instance variable from part D1
+    void SetStudentID(std::string studentID);
+    void SetFirstName(std::string firstName);
+    void SetLastName(std::string lastName);
+    void SetEmailAddress(std::string emailAddress);
+    void SetAge(int age);
+    void SetCourseDays(const int courseDays[]);
+    void SetDegreeProgram(DegreeProgram dProgram);
+    
+    //print() to print specific student data
+    //static void printHeader();//to clearly lable the categories when printing.
     void print();
-
     
+    //Create the class Student  in the files student.h and student.cpp
+private:
+    std::string studentID;
+    std::string firstName;
+    std::string lastName;
+    std::string emailAddress;
+    int age;
+    int courseDays[daysArray];
+    DegreeProgram degreeProgram;
 };
-
+#endif /* student_h */

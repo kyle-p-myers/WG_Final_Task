@@ -1,21 +1,28 @@
-#pragma once
-#include<iostream>
-#ifndef DEGREE_H
-#define DEGREE_H
+//
+//  degree.h
+//  C867 - JYM1 TASK 1 - CLASS ROSTER
+//
+//  Created by Toni Work on 12/19/22.
+//
+#ifndef degree_h
+#define degree_h
+
+#include <stdio.h>
 
 using namespace std;
 
-//Enumerated Class
-enum class DegreeProgram {
-    SECURITY, NETWORK, SOFTWARE
-};
+//C.  Define an enumerated data type DegreeProgram for the degree programs containing the data type values SECURITY, NETWORK, and SOFTWARE.
 
+enum DegreeProgram {
+	UNDECLARED,
+	SECURITY,
+	NETWORK,
+	SOFTWARE
+};
 static const std::string degreeProgramString[] = {
-    "Security", 
-    "Network", 
-    "Software"
+	"UNDERCLARED",
+	"SECURITY",
+	"NETWORK",
+	"SOFTWARE"
 };
-
-#endif
-
-
+#endif /* degree_h */
