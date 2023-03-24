@@ -15,9 +15,7 @@ using namespace std;
 int main() {
     
     
-    const string intro = "C867 final Task | C++ | 009392213 | Kyle Myers";
-
-    cout << intro << endl;
+    cout << "C867 final Task | C++ | 009392213 | Kyle Myers" << endl ;
 
     Roster *roster = new Roster();
 
@@ -35,7 +33,7 @@ int main() {
     
     
     //loop through classRosterArray and for each element:
-    for(int i = 0; i<5; i++){
+    for(int i = 0; i < 5; i++){
         roster->printAverageDaysInCourse(roster->classRosterArray[i]->getStudentID());
     }
     roster->remove("A3");

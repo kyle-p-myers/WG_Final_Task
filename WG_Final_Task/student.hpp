@@ -42,19 +42,9 @@ public:
     student(string studentId, string firstName, string lastName, string email,int age, int numDaysToComplete[3], DegreeProgram degree);
 
     
-    
-    //print function for printing student data.
-    enum variables {
-        STUDENTID = 0,
-        FIRSTNAME = 1,
-        LASTNAME = 2,
-        EMAIL = 3,
-        AGE = 4,
-        NUMDAYS = 5,
-        DEGREEPROGRAM = 6
-    };
+   
     //Variable Choices for Print Fnct.
-    void printData(variables choice);
+    void print();
 
     
 };
