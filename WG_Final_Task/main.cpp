@@ -1,46 +1,76 @@
-
 //
 //  main.cpp
-//  C867
+//  C867 - JYM1 TASK 1 - CLASS ROSTER
 //
-//  Created by Kyle on 3/12/23.
+//  Created by Toni Work on 12/19/22.
 //
-
-#include "degree.h"
-#include "student.hpp"
-#include "roster.hpp"
+/*
+ F.  Demonstrate the program’s required functionality by adding a main() function in main.cpp, which will contain the required function calls to achieve the following results:
+ */
+#include <stdio.h>
+#include <iostream>
 #include <string>
+#include "roster.hpp"
+#include "student.hpp"
 
 using namespace std;
+
 int main() {
-    
-    
-    cout << "C867 final Task | C++ | 009392213 | Kyle Myers" << endl ;
 
-    Roster *roster = new Roster();
-
-    // Adds all student data to classRoster
-    roster->parseInitStudentData();
+    cout << "Scripting and Programming Applications - C867" << endl;
+    cout << "Language: C++" << endl;
+    cout << "WGU Student ID: 010807298" << endl;
+    cout << "Programmer: Melodee Stewart" << endl << endl;
     
+    const string studentData[] = {
+        "A1,John,Smith,John1989@gm ail.com,20,30,35,40,SECURITY",
+        "A2,Suzan,Erickson,Erickson_1990@gmailcom,19,50,30,40,NETWORK",
+        "A3,Jack,Napoli,The_lawyer99yahoo.com,19,20,40,33,SOFTWARE",
+        "A4,Erin,Black,Erin.black@comcast.net,22,50,58,40,SECURITY",
+        "A5,Toni,Stewart,mste902@wgu.edu,30,2,14,17,SOFTWARE"
+    };
     
-    /*Function Test
-    roster->printAll();
+    const int totalStudents = 5;
+    //2.  Create an instance of the Roster class called classRoster.
+    Roster classRoster;
+    //3.  Add each student to classRoster.
+    classRoster.parseArray(studentData);
+   
+    cout << "All students: ";
     cout << endl;
-    roster->printInvalidEmails();
-    cout << endl;
-    roster->printByDegreeProgram(DegreeProgram::SOFTWARE);
-    cout << endl;*/
     
+    classRoster.printAll();
+    cout << endl;
     
-    //loop through classRosterArray and for each element:
-    for(int i = 0; i < 5; i++){
-        roster->printAverageDaysInCourse(roster->classRosterArray[i]->getStudentID());
-    }
-    roster->remove("A3");
+    classRoster.printInvalidEmails();
     cout << endl;
-    roster->printAll();
+    
+    //loop through
+    cout << "Average days in a course (each student): " << endl;
+    for (int i = 0; i < totalStudents; i++) classRoster.printAverageDaysInCourse(classRoster.getStudent()[i]->GetStudentID());
     cout << endl;
-    roster->remove("A3");
+    
+    cout << "Software Degrees: " << endl;
+    classRoster.printByDegreeProgram(DegreeProgram::SOFTWARE);
     cout << endl;
-    cout  << "DONE" << "\n";
+    
+    cout << "Removing student A3" << endl;
+    classRoster.removeStudent("A3");
+    cout << endl;
+    
+    cout << "All students: " << endl;
+    classRoster.printAll();
+    cout << endl;
+    classRoster.removeStudent("A3");
+    //expected: the above line should print a message saying such a student with this ID was not found.
+    
+    //5.  Implement the destructor to release the memory that was allocated dynamically in Roster.
+    
+    char exitSign = 'a';
+        while (exitSign != 'q') {
+            cout << endl << "enter 'q' to quit...";
+            cin >> exitSign;
+            cout << endl << endl;
+        }
+     return 0;
 }

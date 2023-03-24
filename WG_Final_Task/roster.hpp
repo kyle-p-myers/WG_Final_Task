@@ -1,48 +1,60 @@
-#pragma once
-#include <iostream>
+//
+//  roster.h
+//  C867 - JYM1 TASK 1 - CLASS ROSTER
+//
+//  Created by Toni Work on 12/19/22.
+//
+/*
+ E.  Create a Roster class (roster.cpp) by doing the following:
+ */
+#ifndef roster_h
+#define roster_h
+#include <stdio.h>
+#include <vector>
 #include <string>
 #include "student.hpp"
+
+using std::string;
+using std::cout;
+using std::endl;
 using namespace std;
 
-class Roster
-{
-    //E.1 Create array of pointers students
-private:
-    int numOfStudents = 5;
-    int lastIndex = -1;
-
+class Roster{
 public:
+    //Constructors
     Roster();
-    //E1  CLASS ROSTER ARRAY.
-    student* classRosterArray[5];
-
-    //E.3.A add function
-    void add(string studentID, string firstName, string lastName, string emailAddress, int age,
-        int daysInCourse1, int daysInCourse2, int daysInCourse3, DegreeProgram degreeprogram);
-
-    //E.3.B remove method
-     void remove(string studentID);
-     
-     //E.3.C print all method
-     void printAll();
-
-     student* getClassRosterArray();
-
-     //E.3.D print days in course
-     void printAverageDaysInCourse(string studentID);
-
-     //E.3.E  valid email check
-     void printInvalidEmails();
-
-     //E.3.F  prints out student information for degree program
-     void printByDegreeProgram(DegreeProgram degreeProgram);
+    //Destructor
+    ~Roster();
+    Student** getStudent();
+     //Uses the data from studentData and adds it to the classRoster as an object
+    void parseArray(const std::string studentData[]);
     
-     //E2.A parse student data
-     void parseInitStudentData();
-         void parse(string row);
+    //a.  public void add(string studentID, string firstName, string lastName, string emailAddress, int age, int daysInCourse1, int daysInCourse2, int daysInCourse3, DegreeProgram degreeprogram)  that sets the instance variables from part D1 and updates the roster.
+    void add(std::string studentID,
+            std::string firstName,
+            std::string lastName,
+            std::string emailAddress,
+            int age,
+            int courseDays1,
+            int courseDays2,
+            int courseDays3,
+            DegreeProgram degreeProgram);
+    //c. public void printAll()
+    void printAll();
+    //d.  public void printAverageDaysInCourse(string studentID)
+    void printAverageDaysInCourse(std::string studentID);
+    //e.  public void printInvalidEmails()
+    void printInvalidEmails();
+    //f.  public void printByDegreeProgram(DegreeProgram degreeProgram) 
+    void printByDegreeProgram(DegreeProgram degreeProgram);
+    //b.  public void remove(string studentID)
+    void removeStudent(string studentID);
+    
+    const static int totalStudents = 5;
+    //1.  Create an array of pointers, classRosterArray, to hold the data provided in the “studentData Table.”
+    Student* classRosterArray[totalStudents] = { nullptr, nullptr, nullptr, nullptr, nullptr };
 
-     ~Roster();
+private:
+    int studentIndex = -1;
 };
-
-
-
+#endif /* roster_h */
