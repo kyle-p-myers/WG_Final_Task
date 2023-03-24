@@ -99,50 +99,15 @@ void student::setEmail(string email)
 }
 
 //Print Function for Student Info
-void student::printData(variables CHOICE)
-{
-    switch (CHOICE) {
-    case 0:
-        cout << "Student ID: " << this->getStudentID() << ". " << "\n";
-        break;
-            
-    case 1:
-        cout << "First Name: " << this->getFirstName() << "\n";
-        break;
-            
-    case 2:
-        cout << " Last Name: " << this->getLastName() << "\n";
-        break;
-            
-    case 3:
-        cout << " Email Address: " << this->getEmail() << "\n";
-        break;
-            
-    case 4:
-        cout << " Age: " << this->getAge() << "\n";
-        break;
-            
-    case 5:
-        cout << " {"<< this->getNumDaysToComplete()[0] << ", " << this->getNumDaysToComplete()[1
-    ] << ", " << this->getNumDaysToComplete()[2] <<"} ";
-        break;
-            
-    case 6:
-        DegreeProgram dp = this->getDegreeProgram();
-        string ret;
-        if (dp == DegreeProgram::SECURITY) {
-            ret = "Security";
-        }
-        else if (dp == DegreeProgram::NETWORK) {
-            ret = "Network";
-        }
-        else {
-            ret = "Software";
-        }
-        cout << "Degree Program: " << ret <<"\n" << endl;
-        break;
-
-    }
-}
-
+void student::print(){
+    cout << "| Student ID :\t" << this->studentID << " |" << '\t';
+    cout << "First & Last Name :\t" << this->firstName << '\t';
+    cout << this->lastName << " |" << '\t';
+    cout << "Email Address :\t" << this->email << " |" << '\t';
+    cout << "Age :\t" << this->age << " |" << '\t';
+    cout << "Days in Course :\t" << this->numDaysToComplete[0] << "," << '\t';
+    cout << this->numDaysToComplete[1] << "," << '\t';
+    cout << this->numDaysToComplete[2] << " |" << '\t';
+    cout << "Degree Program :\t" << degreeProgramString[(int)this->degree]<< " |" << '\t' << endl;
+};
 

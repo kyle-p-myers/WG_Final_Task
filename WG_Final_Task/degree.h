@@ -10,6 +10,11 @@ enum class DegreeProgram {
     SECURITY, NETWORK, SOFTWARE
 };
 
+static const std::string degreeProgramString[] = {
+    "Security", 
+    "Network", 
+    "Software"
+};
 
 #endif
 
